@@ -1,4 +1,4 @@
-# e-commerce (PHP 8.x, Symfony 7.2.3, MariaDB 10.6.9))
+# e-commerce (PHP 8.x, Symfony 7.2.3, MariaDB 10.6.9)
 
 
 ## Installation
