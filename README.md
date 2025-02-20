@@ -1,9 +1,5 @@
-# e-commerce
+# e-commerce (PHP 8.x, Symfony 7.2.3)
 
-From Scratch I did:
-- composer create-project symfony/skeleton:"7.2.x" e-commerce
-- composer require webapp
-- run Docker then docker compose up --force-recreate
 
 ## Installation
 - donwload the project in a folder
