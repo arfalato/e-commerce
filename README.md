@@ -31,7 +31,7 @@ bunch of random products
 
  ```POST /orders ```
 
-Request body: (make sure that products is are correct, see ```products``` table)
+Request body: (make sure that products Ids are correct, see ```products``` table)
 ```
 {
   "name": "first order",
