@@ -8,7 +8,6 @@ From Scratch I did:
 ## Installation
 - donwload the project in a folder
 - run Docker then docker compose up --force-recreate
-- run composer install in the project root of Docker php container
 - run php bin/console doctrine:schema:update --dump-sql --force in the project root of Docker php container
 - run php bin/console doctrine:fixtures:load --env=dev in the project root of Docker php container in order to create a 
 bunch of random products
