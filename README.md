@@ -25,7 +25,7 @@ bunch of random products
   OK (6 tests, 16 assertions)
   ```
 
-## RestFul API endpoint provided:
+## RestFul API endpoints provided:
 
 ### Create a new order:
 
