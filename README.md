@@ -1,11 +1,11 @@
-# e-commerce (PHP 8.x, Symfony 7.2.3)
+# e-commerce (PHP 8.x, Symfony 7.2.3, MariaDB 10.6.9))
 
 
 ## Installation
 - donwload the project in a folder
-- run Docker then docker compose up --force-recreate
-- run php bin/console doctrine:schema:update --dump-sql --force in the project root of Docker php container
-- run php bin/console doctrine:fixtures:load --env=dev in the project root of Docker php container in order to create a 
+- run Docker then command ```docker compose up --force-recreate```
+- run ``` php bin/console doctrine:schema:update --dump-sql --force ``` in the project root of Docker php container
+- run ```php bin/console doctrine:fixtures:load --env=dev``` in the project root of Docker php container in order to create a 
 bunch of random products
 - go to http://localhost/heartbeat in your browser you should see a message "I am alive."
 
@@ -13,15 +13,25 @@ bunch of random products
 - available at http://localhost:8081/ (username: root, password: root_psw)
 
 ## Tests:
-- run php bin/phpunit in the project root of Docker php container
+- run ```php bin/phpunit``` in the project root of Docker php container
+  output:
+  ```
+  PHPUnit 9.6.22 by Sebastian Bergmann and contributors.
+  Testing 
+  ......                                                              6 / 6 (100%)
+
+  Time: 00:00.014, Memory: 8.00 MB
+
+  OK (6 tests, 16 assertions)
+  ```
 
 ## API:
 
 ### Create a new order:
 
-POST /orders
+ ```POST /orders ```
 
-Request body:
+Request body: (make sure that products is are correct, see ```products``` table)
 ```
 {
   "name": "first order",
@@ -43,7 +53,7 @@ Response body:
 18
 ```
 ## Get one order:
-GET /orders/18
+ ```GET /orders/18 ```
 
 Response body:
 ```
@@ -70,7 +80,7 @@ Response body:
 }
 ```
 ## Get all orders:
-GET /orders
+ ```GET /orders ```
 
 Response body:
 ```
@@ -309,7 +319,7 @@ Response body:
 ]
 ```
 ## Update an order:
-PUT /orders/18
+ ```PUT /orders/18 ```
 
 Request body:
 ```
@@ -334,11 +344,11 @@ Response Body
 ```
 
 ## Delete an order:
-DELETE /orders/18
+ ```DELETE /orders/18 ```
 
 
 ## Get orders by name:
-GET /orders?name=ACME
+ ```GET /orders?name=ACME ```
 
 Response Body
 ```
@@ -368,7 +378,7 @@ Response Body
 ```
 
 ## Get orders by description:
-GET /orders?description=ACME DES
+ ```GET /orders?description=ACME DES ```
 
 Response Body
 ```
@@ -398,7 +408,7 @@ Response Body
 ```
 
 ## Get orders by creation date:
-GET /orders?date=2025-02-20
+ ```GET /orders?date=2025-02-20 ```
 
 Response Body
 ```
