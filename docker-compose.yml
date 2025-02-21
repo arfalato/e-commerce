@@ -1,6 +1,8 @@
+version: '3.8'
+
 services:
   db:
-    image:  mariadb:10.6.9
+    image: mariadb:10.6.9
     environment:
       - MYSQL_DATABASE=e-commerce_db
       - MYSQL_USER=dev
@@ -11,7 +13,6 @@ services:
       - '8989:3306'
     volumes:
       - './docker/shared/db/:/var/lib/mysql'
-
 
   php:
     build:
@@ -53,8 +54,31 @@ services:
     environment:
       - PMA_HOST=db
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.1
+    container_name: e-commerce_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - '9200:9200'
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0
+    container_name: e-commerce_kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+
 volumes:
   bundles:
   js:
   vendor:
   var:
+  es_data:
+    driver: local

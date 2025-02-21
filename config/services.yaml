@@ -6,6 +6,7 @@
 parameters:
 
 services:
+    FOS\ElasticaBundle\Finder\PaginatedFinderInterface: '@fos_elastica.finder.orders'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

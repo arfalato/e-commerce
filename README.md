@@ -542,4 +542,155 @@ Response Body
     }
 ]
 ```
-
+## ElasticSearch
+- Implemented a simple example of ElasticSearch
+- To check if works, go to http://localhost:9200/ in your browser: you should see a message like this:
+```
+{
+  "name" : "d30977fea141",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "bNoyv8WyT3WqLcWB9KIcng",
+  "version" : {
+    "number" : "8.5.1",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "c1310c45fc534583afe2c1c03046491efba2bba2",
+    "build_date" : "2022-11-09T21:02:20.169855900Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.4.1",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+- after created some orders run ```php bin/console fos:elastica:populate``` in the project root of Docker php container
+You should see a message like this:
+```
+Resetting orders
+ 4/4 [============================] 100%
+Populating orders
+Refreshing orders
+```
+- Go to http://localhost:9200/orders/_search?pretty to check if the orders are indexed in ElasticSearch
+you should see something like 
+```
+{
+  "took" : 10,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 3,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "orders",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "id" : 1,
+          "name" : "first order",
+          "description" : "first order description"
+        }
+      },
+      {
+        "_index" : "orders",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "id" : 2,
+          "name" : "ACME",
+          "description" : "ACME description"
+        }
+      },
+      {
+        "_index" : "orders",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "id" : 3,
+          "name" : "My order",
+          "description" : "My description"
+        }
+      }
+    ]
+  }
+}
+```
+Elastic endpoint:
+```
+GET /orders/orders-elastic
+```
+Response
+```
+{
+    "total": 3,
+    "page": 1,
+    "limit": 10,
+    "pages": 1,
+    "orders": [
+        {
+            "id": 1,
+            "name": "first order",
+            "description": "first order description"
+        },
+        {
+            "id": 2,
+            "name": "ACME",
+            "description": "ACME description"
+        },
+        {
+            "id": 3,
+            "name": "My order",
+            "description": "My description"
+        }
+    ]
+}
+```
+Some simple search examples:
+```
+GET /orders-elastic?q=ACME
+```
+Response
+```
+{
+    "total": 1,
+    "page": 1,
+    "limit": 10,
+    "pages": 1,
+    "orders": [
+        {
+            "id": 2,
+            "name": "ACME",
+            "description": "ACME description"
+        }
+    ]
+}
+```
+```
+GET /orders-elastic?limit=1
+```
+Response
+```
+{
+    "total": 3,
+    "page": 1,
+    "limit": "1",
+    "pages": 3,
+    "orders": [
+        {
+            "id": 1,
+            "name": "first order",
+            "description": "first order description"
+        }
+    ]
+}
+```

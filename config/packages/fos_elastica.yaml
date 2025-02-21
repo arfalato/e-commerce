@@ -1,0 +1,17 @@
+# Read the documentation: https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/master/doc/setup.md
+fos_elastica:
+    clients:
+        default: { host: '%env(ELASTICSEARCH_HOST)%', port: '%env(ELASTICSEARCH_PORT)%' }
+    indexes:
+        orders:
+            persistence:
+                driver: orm
+                model: App\Entity\Order
+                provider: ~
+                finder: ~
+            properties:
+                id: ~
+                name: { type: "text" }
+                description: { type: "text" }
+
+
