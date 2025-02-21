@@ -7,13 +7,14 @@
 - run ``` php bin/console doctrine:schema:update --dump-sql --force ``` in the project root of Docker php container
 - run ```php bin/console doctrine:fixtures:load --env=dev``` in the project root of Docker php container in order to create a 
 bunch of random products
-- go to http://localhost/heartbeat in your browser you should see a message "I am alive."
+- go to http://localhost/heartbeat in your browser: you should see a message "I am alive."
 
 ## phpMyAdmin:
 - available at http://localhost:8081/ (username: root, password: root_psw)
 
 ## Tests:
 - run ```php bin/phpunit``` in the project root of Docker php container
+  
   output:
   ```
   PHPUnit 9.6.22 by Sebastian Bergmann and contributors.
