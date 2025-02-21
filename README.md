@@ -694,3 +694,6 @@ Response
     ]
 }
 ```
+## Kibana
+- Kibana is available at http://localhost:5601/
+- Installed just for fun and see how it works
