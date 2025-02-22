@@ -627,7 +627,7 @@ you should see something like
 ```
 Elastic endpoint:
 ```
-GET /orders/orders-elastic
+GET /orders-elastic
 ```
 Response
 ```
