@@ -26,3 +26,7 @@
 
 # PHP Storm data
 /.idea/
+
+# Docker-related
+docker/shared/*
+!docker/shared/.gitkeep
