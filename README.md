@@ -632,32 +632,59 @@ GET /orders/orders-elastic
 Response
 ```
 {
-    "total": 3,
+    "total": 2,
     "page": 1,
     "limit": 10,
     "pages": 1,
     "orders": [
         {
             "id": 1,
-            "name": "first order",
-            "description": "first order description"
+            "date": "2025-02-22 00:22:31",
+            "name": "My order",
+            "description": "My description",
+            "totalAmount": 3255,
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Product_8935153ae9c5a01503eb4948ca7e0a55",
+                    "quantity": 2,
+                    "price": 984
+                },
+                {
+                    "id": 2,
+                    "name": "Product_e7b30b01fa6b7cc5705a9b7a5f4d4770",
+                    "quantity": 3,
+                    "price": 429
+                }
+            ]
         },
         {
             "id": 2,
-            "name": "ACME",
-            "description": "ACME description"
-        },
-        {
-            "id": 3,
-            "name": "My order",
-            "description": "My description"
+            "date": "2025-02-22 00:22:57",
+            "name": "best order",
+            "description": "best description",
+            "totalAmount": 1896,
+            "products": [
+                {
+                    "id": 3,
+                    "name": "Product_f3d56c5906cbe5dcbbef6f1f0068e655",
+                    "quantity": 2,
+                    "price": 339
+                },
+                {
+                    "id": 4,
+                    "name": "Product_7044667e93600b8f44a38c6b13a14698",
+                    "quantity": 3,
+                    "price": 406
+                }
+            ]
         }
     ]
 }
 ```
 Some simple search examples:
 ```
-GET /orders-elastic?q=ACME
+GET /orders-elastic?q=best
 ```
 Response
 ```
@@ -669,8 +696,24 @@ Response
     "orders": [
         {
             "id": 2,
-            "name": "ACME",
-            "description": "ACME description"
+            "date": "2025-02-22 00:22:57",
+            "name": "best order",
+            "description": "best description",
+            "totalAmount": 1896,
+            "products": [
+                {
+                    "id": 3,
+                    "name": "Product_f3d56c5906cbe5dcbbef6f1f0068e655",
+                    "quantity": 2,
+                    "price": 339
+                },
+                {
+                    "id": 4,
+                    "name": "Product_7044667e93600b8f44a38c6b13a14698",
+                    "quantity": 3,
+                    "price": 406
+                }
+            ]
         }
     ]
 }
@@ -681,15 +724,31 @@ GET /orders-elastic?limit=1
 Response
 ```
 {
-    "total": 3,
+    "total": 2,
     "page": 1,
     "limit": "1",
-    "pages": 3,
+    "pages": 2,
     "orders": [
         {
             "id": 1,
-            "name": "first order",
-            "description": "first order description"
+            "date": "2025-02-22 00:22:31",
+            "name": "My order",
+            "description": "My description",
+            "totalAmount": 3255,
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Product_8935153ae9c5a01503eb4948ca7e0a55",
+                    "quantity": 2,
+                    "price": 984
+                },
+                {
+                    "id": 2,
+                    "name": "Product_e7b30b01fa6b7cc5705a9b7a5f4d4770",
+                    "quantity": 3,
+                    "price": 429
+                }
+            ]
         }
     ]
 }
