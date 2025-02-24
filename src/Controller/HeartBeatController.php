@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class HeartBeatController
 {
     #[Route('/heartbeat')]
-    public function number(): Response
+    public function heartbeat(): Response
     {
         return new Response(
             '<html><body>I am alive.</body></html>'
